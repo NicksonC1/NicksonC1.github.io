@@ -1,52 +1,209 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VEX Robotics</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nickson Chen | Personal Site</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Space+Grotesk:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="shortcut icon" href="images/LunarLogo.ico" type="image/x-icon" />
-</head>
+  </head>
+  <body>
+    <div class="cursor-glow" aria-hidden="true"></div>
+    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="bg-orbs" aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
 
-<body>
-    <nav class="navbar">
-        <div class="container">
-            <div class="logo">
-                <a href="index.html">
-                    <img src="images/LunarLogo.png" alt="logo">
-                </a>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="logo" href="#top">NC</a>
+        <nav class="site-nav" aria-label="Main">
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#now">Now</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <a class="nav-cta" href="#contact">Let's talk</a>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-inner">
+          <div class="hero-copy">
+            <p class="eyebrow">Personal site</p>
+            <h1>Nickson Chen</h1>
+            <p class="lead">
+              I design clean, energetic experiences for the web and experiment
+              with robotics systems that feel alive.
+            </p>
+            <div class="hero-actions">
+              <a class="btn primary" href="#projects">View projects</a>
+              <a class="btn ghost" href="#contact">Contact</a>
             </div>
-            <div class="main-menu">
-                <ul>
-                    <li>
-                        <a href="index.html">Home</a>
-                    </li>
-                    <li>
-                        <a href="#">Documentation</a>
-                    </li>
-                    <li>
-                        <a href="#">Forums</a>
-                    </li>
-                    <li>
-                        <a class="btn btn-primary" href="#">
-                            <i class="fas fa-user"></i> Log In
-                        </a>
-                    </li>
-                </ul>
+            <div class="hero-meta">
+              <div class="meta-card">
+                <span class="label">Focus</span>
+                <span class="value">Interface + Motion</span>
+              </div>
+              <div class="meta-card">
+                <span class="label">Location</span>
+                <span class="value">California</span>
+              </div>
+              <div class="meta-card">
+                <span class="label">Availability</span>
+                <span class="value">Open for collabs</span>
+              </div>
             </div>
+          </div>
+          <div class="hero-panel">
+            <div class="panel-header">
+              <span class="panel-title">Signal</span>
+              <span class="panel-dot"></span>
+            </div>
+            <div class="panel-body">
+              <div class="panel-row">
+                <span>Current build</span>
+                <span>Personal site v3</span>
+              </div>
+              <div class="panel-row">
+                <span>Next sprint</span>
+                <span>XR experiments</span>
+              </div>
+              <div class="panel-row">
+                <span>Status</span>
+                <span>Charging ideas</span>
+              </div>
+            </div>
+            <div class="panel-tags">
+              <span>Figma</span>
+              <span>Three.js</span>
+              <span>VEX</span>
+              <span>Motion</span>
+            </div>
+          </div>
         </div>
-    </nav>
-    <script:src="js /main.js">
-        </script>
-</body>
+      </section>
 
+      <section id="about" class="section about">
+        <div class="container split">
+          <div>
+            <h2>About</h2>
+            <p>
+              I chase that sweet spot where precision engineering meets cinematic
+              storytelling. My work blends product thinking, motion design, and
+              interactive systems to create websites that feel like controlled
+              sci-fi environments.
+            </p>
+          </div>
+          <div class="about-card">
+            <h3>Signal stack</h3>
+            <ul>
+              <li>Web design, identity systems, interaction design</li>
+              <li>React, WebGL, micro-animations, rapid prototyping</li>
+              <li>Robotics and automation, competition systems</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="section projects">
+        <div class="container">
+          <div class="section-head">
+            <h2>Selected projects</h2>
+            <p>Small set of experiments with big ambition.</p>
+          </div>
+          <div class="card-grid">
+            <article class="card">
+              <h3>Autonomous Fleet Map</h3>
+              <p>
+                Command center interface for real-time robotics telemetry with
+                layered navigation and adaptive alerts.
+              </p>
+              <div class="tags">
+                <span>UX</span>
+                <span>Data Viz</span>
+                <span>Prototype</span>
+              </div>
+            </article>
+            <article class="card">
+              <h3>Motion Lab</h3>
+              <p>
+                A motion toolkit designed to generate kinetic hero sequences
+                with physics-driven transitions.
+              </p>
+              <div class="tags">
+                <span>Motion</span>
+                <span>WebGL</span>
+                <span>R and D</span>
+              </div>
+            </article>
+            <article class="card">
+              <h3>Personal Ops Console</h3>
+              <p>
+                A personal dashboard for priorities, training, and creative
+                outputs, tuned for daily flow.
+              </p>
+              <div class="tags">
+                <span>Product</span>
+                <span>Systems</span>
+                <span>Design</span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="now" class="section now">
+        <div class="container split">
+          <div>
+            <h2>Now</h2>
+            <p>
+              The current loop: fast prototypes, deep focus, and testing new
+              interaction models.
+            </p>
+          </div>
+          <ul class="now-list">
+            <li>Refining a futuristic visual system for a new portfolio.</li>
+            <li>Exploring immersive navigation patterns for 3D scenes.</li>
+            <li>Iterating on robotics software pipelines and controls.</li>
+            <li>Curating a stronger narrative around personal projects.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="contact" class="section contact">
+        <div class="container">
+          <div class="cta-card">
+            <div>
+              <h2>Let's build something vivid</h2>
+              <p>
+                If you want a site with energy, clarity, and a futuristic edge,
+                drop me a note.
+              </p>
+            </div>
+            <a class="btn primary" href="mailto:hello@example.com"
+              >Start a conversation</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <span>Nickson Chen</span>
+        <span>Personal website</span>
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
 </html>
