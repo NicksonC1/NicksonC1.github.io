@@ -27,7 +27,9 @@
         <nav class="site-nav" aria-label="Main">
           <a href="#about">About</a>
           <a href="#projects">Projects</a>
+          <a href="#utilities">Utilities</a>
           <a href="#now">Now</a>
+          <a href="#auth">Login</a>
           <a href="#contact">Contact</a>
         </nav>
         <a class="nav-cta" href="#contact">Let's talk</a>
@@ -37,7 +39,7 @@
     <main id="top">
       <section class="hero">
         <div class="container hero-inner">
-          <div class="hero-copy">
+          <div class="hero-copy" data-parallax="0.12">
             <p class="eyebrow">Engineer</p>
             <h1>Nickson Chen</h1>
             <p class="lead">
@@ -63,7 +65,7 @@
               </div>
             </div>
           </div>
-          <div class="hero-panel">
+          <div class="hero-panel" data-parallax="0.2">
             <div class="panel-header">
               <span class="panel-title">Signal</span>
               <span class="panel-dot"></span>
@@ -103,7 +105,7 @@
               sci-fi environments.
             </p>
           </div>
-          <div class="about-card">
+          <div class="about-card" data-parallax="0.08">
             <h3>Signal stack</h3>
             <ul>
               <li>Web design, identity systems, interaction design</li>
@@ -116,11 +118,11 @@
 
       <section id="projects" class="section projects">
         <div class="container">
-          <div class="section-head">
+          <div class="section-head" data-parallax="0.06">
             <h2>Selected projects</h2>
             <p>Small set of experiments with big ambition.</p>
           </div>
-          <div class="card-grid">
+          <div class="card-grid" data-parallax="0.04">
             <article class="card">
               <h3>Autonomous Fleet Map</h3>
               <p>
@@ -161,6 +163,197 @@
         </div>
       </section>
 
+      <section id="utilities" class="section utilities">
+        <div class="container">
+          <div class="section-head" data-parallax="0.06">
+            <h2>Utilities</h2>
+            <p>Quick tools I use to speed up creative workflow.</p>
+          </div>
+          <div class="utility-grid">
+            <article class="utility-card" data-parallax="0.03">
+              <div class="utility-head">
+                <h3>Video transcript getter</h3>
+                <p>
+                  Pull transcripts from YouTube or transcribe local media in
+                  the browser.
+                </p>
+              </div>
+              <div class="utility-body">
+                <label class="field" for="yt-input">
+                  <span>YouTube URL or ID</span>
+                  <div class="field-row">
+                    <input
+                      id="yt-input"
+                      type="text"
+                      placeholder="https://www.youtube.com/watch?v=..."
+                      autocomplete="off"
+                    />
+                    <button class="btn ghost" id="yt-fetch" type="button">
+                      Get transcript
+                    </button>
+                  </div>
+                </label>
+                <label class="field" for="local-file">
+                  <span>Local video or audio file</span>
+                  <div class="field-row">
+                    <input id="local-file" type="file" accept="video/*,audio/*" />
+                    <button class="btn ghost" id="local-transcribe" type="button">
+                      Transcribe file
+                    </button>
+                  </div>
+                  <p class="field-note">
+                    Runs fully in-browser. First load may take a minute for the
+                    model download.
+                  </p>
+                </label>
+                <label class="field" for="transcript-output">
+                  <span>Transcript</span>
+                  <textarea
+                    id="transcript-output"
+                    rows="10"
+                    readonly
+                    placeholder="Transcript output will appear here..."
+                  ></textarea>
+                </label>
+                <div class="utility-actions">
+                  <button class="btn primary" id="copy-transcript" type="button">
+                    Copy
+                  </button>
+                  <button class="btn ghost" id="download-transcript" type="button">
+                    Download TXT
+                  </button>
+                </div>
+                <p class="status" id="transcript-status" role="status"></p>
+              </div>
+            </article>
+            <article class="utility-card" data-parallax="0.05">
+              <div class="utility-head">
+                <h3>YouTube downloader</h3>
+                <p>
+                  Select a target format and we will prep a download pipeline.
+                  (Backend required.)
+                </p>
+              </div>
+              <div class="utility-body">
+                <label class="field" for="yt-download-input">
+                  <span>YouTube URL or ID</span>
+                  <input
+                    id="yt-download-input"
+                    type="text"
+                    placeholder="https://www.youtube.com/watch?v=..."
+                    autocomplete="off"
+                  />
+                </label>
+                <label class="field" for="yt-format">
+                  <span>Format</span>
+                  <select id="yt-format">
+                    <option value="mp4-360">MP4 360p</option>
+                    <option value="mp4-720">MP4 720p</option>
+                    <option value="mp4-1080">MP4 1080p</option>
+                    <option value="mp3-128">MP3 128 kbps</option>
+                    <option value="mp3-320">MP3 320 kbps</option>
+                    <option value="m4a">M4A</option>
+                    <option value="webm">WEBM</option>
+                  </select>
+                </label>
+                <div class="utility-actions">
+                  <button class="btn primary" id="yt-download" type="button">
+                    Prepare download
+                  </button>
+                </div>
+                <p class="status" id="download-status" role="status"></p>
+              </div>
+            </article>
+            <article class="utility-card" data-parallax="0.04">
+              <div class="utility-head">
+                <h3>Image resizer + cropper</h3>
+                <p>
+                  Resize, crop, and export images locally in the browser with
+                  quick presets and controls.
+                </p>
+              </div>
+              <div class="utility-body">
+                <label class="field" for="image-input">
+                  <span>Image file</span>
+                  <input id="image-input" type="file" accept="image/*" />
+                </label>
+                <div class="image-stage" id="image-stage" data-empty="true">
+                  <img id="image-preview" alt="Preview" />
+                  <div class="crop-mask crop-mask-top" aria-hidden="true"></div>
+                  <div class="crop-mask crop-mask-right" aria-hidden="true"></div>
+                  <div class="crop-mask crop-mask-bottom" aria-hidden="true"></div>
+                  <div class="crop-mask crop-mask-left" aria-hidden="true"></div>
+                  <div class="crop-selection" id="crop-selection" aria-hidden="true"></div>
+                </div>
+                <p class="field-note">
+                  Drag on the image to create a crop area. Drag inside the box to
+                  reposition it.
+                </p>
+                <div class="controls-grid">
+                  <label class="field" for="resize-width">
+                    <span>Width (px)</span>
+                    <input id="resize-width" type="number" min="1" />
+                  </label>
+                  <label class="field" for="resize-height">
+                    <span>Height (px)</span>
+                    <input id="resize-height" type="number" min="1" />
+                  </label>
+                </div>
+                <div class="field-row">
+                  <label class="toggle">
+                    <input id="resize-lock" type="checkbox" checked />
+                    <span>Lock resize ratio</span>
+                  </label>
+                  <label class="toggle">
+                    <input id="crop-toggle" type="checkbox" />
+                    <span>Enable crop</span>
+                  </label>
+                </div>
+                <label class="field" for="crop-ratio">
+                  <span>Crop ratio</span>
+                  <select id="crop-ratio">
+                    <option value="free">Free</option>
+                    <option value="1">1:1</option>
+                    <option value="1.7778">16:9</option>
+                    <option value="1.3333">4:3</option>
+                    <option value="1.5">3:2</option>
+                  </select>
+                </label>
+                <div class="controls-grid">
+                  <label class="field" for="output-format">
+                    <span>Output format</span>
+                    <select id="output-format">
+                      <option value="image/png">PNG</option>
+                      <option value="image/jpeg" selected>JPG</option>
+                      <option value="image/webp">WEBP</option>
+                    </select>
+                  </label>
+                  <label class="field" for="output-quality">
+                    <span>Quality <strong id="quality-value">90%</strong></span>
+                    <input
+                      id="output-quality"
+                      type="range"
+                      min="40"
+                      max="100"
+                      value="90"
+                    />
+                  </label>
+                </div>
+                <div class="utility-actions">
+                  <button class="btn primary" id="image-download" type="button">
+                    Download image
+                  </button>
+                  <button class="btn ghost" id="image-reset" type="button">
+                    Reset
+                  </button>
+                </div>
+                <p class="status" id="image-status" role="status"></p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <section id="now" class="section now">
         <div class="container split">
           <div>
@@ -170,7 +363,7 @@
               interaction models.
             </p>
           </div>
-          <ul class="now-list">
+          <ul class="now-list" data-parallax="0.05">
             <li>Refining a futuristic visual system for a new portfolio.</li>
             <li>Exploring immersive navigation patterns for 3D scenes.</li>
             <li>Iterating on robotics software pipelines and controls.</li>
@@ -179,9 +372,75 @@
         </div>
       </section>
 
+      <section id="auth" class="section auth">
+        <div class="container">
+          <div class="section-head" data-parallax="0.06">
+            <h2>Account access</h2>
+            <p>Secure sign in for private utilities and saved work.</p>
+          </div>
+          <div class="auth-card" data-parallax="0.05">
+            <div class="auth-tabs" role="tablist" aria-label="Auth tabs">
+              <button
+                class="auth-tab is-active"
+                type="button"
+                data-auth="login"
+                aria-selected="true"
+              >
+                Login
+              </button>
+              <button
+                class="auth-tab"
+                type="button"
+                data-auth="register"
+                aria-selected="false"
+              >
+                Register
+              </button>
+            </div>
+            <form id="login-form" class="auth-form is-active" autocomplete="on">
+              <label class="field" for="login-email">
+                <span>Email</span>
+                <input id="login-email" type="email" required />
+              </label>
+              <label class="field" for="login-password">
+                <span>Password</span>
+                <input id="login-password" type="password" required />
+              </label>
+              <button class="btn primary" type="submit">Sign in</button>
+            </form>
+            <form id="register-form" class="auth-form" autocomplete="on">
+              <label class="field" for="register-email">
+                <span>Email</span>
+                <input id="register-email" type="email" required />
+              </label>
+              <label class="field" for="register-password">
+                <span>Password</span>
+                <input id="register-password" type="password" required />
+              </label>
+              <label class="field" for="register-confirm">
+                <span>Confirm password</span>
+                <input id="register-confirm" type="password" required />
+              </label>
+              <button class="btn primary" type="submit">Create account</button>
+            </form>
+            <div class="auth-meta">
+              <span id="auth-user" class="auth-user"></span>
+              <button class="btn ghost" id="logout-button" type="button">
+                Log out
+              </button>
+            </div>
+            <p class="status" id="auth-status" role="status"></p>
+            <p class="auth-note">
+              Connect this section to Firebase Auth by adding your config in
+              <code>js/main.js</code>.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <section id="contact" class="section contact">
         <div class="container">
-          <div class="cta-card">
+          <div class="cta-card" data-parallax="0.08">
             <div>
               <h2>Let's build something vivid</h2>
               <p>
@@ -189,7 +448,7 @@
                 drop me a note.
               </p>
             </div>
-            <a class="btn primary" href="mailto:hello@example.com"
+            <a class="btn primary" href="mailto:nicksonchen97@gmail.com"
               >Start a conversation</a
             >
           </div>
@@ -204,6 +463,6 @@
       </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script type="module" src="js/main.js"></script>
   </body>
 </html>
