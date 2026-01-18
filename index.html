@@ -29,10 +29,9 @@
           <a href="#projects">Projects</a>
           <a href="#utilities">Utilities</a>
           <a href="#now">Now</a>
-          <a href="#auth">Login</a>
           <a href="#contact">Contact</a>
         </nav>
-        <a class="nav-cta" href="#contact">Let's talk</a>
+        <a class="nav-cta nav-login" href="login.html">Login</a>
       </div>
     </header>
 
@@ -372,71 +371,6 @@
         </div>
       </section>
 
-      <section id="auth" class="section auth">
-        <div class="container">
-          <div class="section-head" data-parallax="0.06">
-            <h2>Account access</h2>
-            <p>Secure sign in for private utilities and saved work.</p>
-          </div>
-          <div class="auth-card" data-parallax="0.05">
-            <div class="auth-tabs" role="tablist" aria-label="Auth tabs">
-              <button
-                class="auth-tab is-active"
-                type="button"
-                data-auth="login"
-                aria-selected="true"
-              >
-                Login
-              </button>
-              <button
-                class="auth-tab"
-                type="button"
-                data-auth="register"
-                aria-selected="false"
-              >
-                Register
-              </button>
-            </div>
-            <form id="login-form" class="auth-form is-active" autocomplete="on">
-              <label class="field" for="login-email">
-                <span>Email</span>
-                <input id="login-email" type="email" required />
-              </label>
-              <label class="field" for="login-password">
-                <span>Password</span>
-                <input id="login-password" type="password" required />
-              </label>
-              <button class="btn primary" type="submit">Sign in</button>
-            </form>
-            <form id="register-form" class="auth-form" autocomplete="on">
-              <label class="field" for="register-email">
-                <span>Email</span>
-                <input id="register-email" type="email" required />
-              </label>
-              <label class="field" for="register-password">
-                <span>Password</span>
-                <input id="register-password" type="password" required />
-              </label>
-              <label class="field" for="register-confirm">
-                <span>Confirm password</span>
-                <input id="register-confirm" type="password" required />
-              </label>
-              <button class="btn primary" type="submit">Create account</button>
-            </form>
-            <div class="auth-meta">
-              <span id="auth-user" class="auth-user"></span>
-              <button class="btn ghost" id="logout-button" type="button">
-                Log out
-              </button>
-            </div>
-            <p class="status" id="auth-status" role="status"></p>
-            <p class="auth-note">
-              Connect this section to Firebase Auth by adding your config in
-              <code>js/main.js</code>.
-            </p>
-          </div>
-        </div>
-      </section>
 
       <section id="contact" class="section contact">
         <div class="container">

@@ -992,18 +992,29 @@ const initImageTool = () => {
 initImageTool();
 
 const initAuth = async () => {
-  if (!loginForm || !registerForm || authTabs.length === 0) {
+  const hasLogin = Boolean(loginForm);
+  const hasRegister = Boolean(registerForm);
+  if (!hasLogin && !hasRegister) {
     return;
   }
+  const hasTabs = authTabs.length > 0;
+  const defaultMode = hasLogin ? "login" : "register";
 
   const setActiveForm = (mode) => {
-    authTabs.forEach((tab) => {
-      const isActive = tab.dataset.auth === mode;
-      tab.classList.toggle("is-active", isActive);
-      tab.setAttribute("aria-selected", isActive ? "true" : "false");
-    });
-    loginForm.classList.toggle("is-active", mode === "login");
-    registerForm.classList.toggle("is-active", mode === "register");
+    if (hasTabs) {
+      authTabs.forEach((tab) => {
+        const isActive = tab.dataset.auth === mode;
+        tab.classList.toggle("is-active", isActive);
+        tab.setAttribute("aria-selected", isActive ? "true" : "false");
+      });
+    }
+    if (loginForm) {
+      const showLogin = mode === "login" || (!hasTabs && !hasRegister);
+      loginForm.classList.toggle("is-active", showLogin);
+    }
+    if (registerForm) {
+      registerForm.classList.toggle("is-active", mode === "register");
+    }
   };
 
   const setLoggedOutState = () => {
@@ -1013,7 +1024,7 @@ const initAuth = async () => {
     if (logoutButton) {
       logoutButton.style.display = "none";
     }
-    setActiveForm("login");
+    setActiveForm(defaultMode);
   };
 
   const setLoggedInState = (user) => {
@@ -1023,13 +1034,19 @@ const initAuth = async () => {
     if (logoutButton) {
       logoutButton.style.display = "inline-flex";
     }
-    loginForm.classList.remove("is-active");
-    registerForm.classList.remove("is-active");
+    if (loginForm) {
+      loginForm.classList.remove("is-active");
+    }
+    if (registerForm) {
+      registerForm.classList.remove("is-active");
+    }
   };
 
-  authTabs.forEach((tab) => {
-    tab.addEventListener("click", () => setActiveForm(tab.dataset.auth));
-  });
+  if (hasTabs) {
+    authTabs.forEach((tab) => {
+      tab.addEventListener("click", () => setActiveForm(tab.dataset.auth));
+    });
+  }
 
   setLoggedOutState();
 
@@ -1078,51 +1095,55 @@ const initAuth = async () => {
       }
     };
 
-    loginForm.addEventListener("submit", async (event) => {
-      event.preventDefault();
-      if (!loginEmail || !loginPassword) {
-        return;
-      }
-      setAuthBusy(true);
-      setAuthStatus("Signing in...", "");
-      try {
-        await signInWithEmailAndPassword(
-          auth,
-          loginEmail.value.trim(),
-          loginPassword.value
-        );
-        setAuthStatus("Signed in successfully.", "success");
-      } catch (error) {
-        setAuthStatus(formatAuthError(error), "error");
-      } finally {
-        setAuthBusy(false);
-      }
-    });
+    if (loginForm) {
+      loginForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        if (!loginEmail || !loginPassword) {
+          return;
+        }
+        setAuthBusy(true);
+        setAuthStatus("Signing in...", "");
+        try {
+          await signInWithEmailAndPassword(
+            auth,
+            loginEmail.value.trim(),
+            loginPassword.value
+          );
+          setAuthStatus("Signed in successfully.", "success");
+        } catch (error) {
+          setAuthStatus(formatAuthError(error), "error");
+        } finally {
+          setAuthBusy(false);
+        }
+      });
+    }
 
-    registerForm.addEventListener("submit", async (event) => {
-      event.preventDefault();
-      if (!registerEmail || !registerPassword || !registerConfirm) {
-        return;
-      }
-      if (registerPassword.value !== registerConfirm.value) {
-        setAuthStatus("Passwords do not match.", "error");
-        return;
-      }
-      setAuthBusy(true);
-      setAuthStatus("Creating account...", "");
-      try {
-        await createUserWithEmailAndPassword(
-          auth,
-          registerEmail.value.trim(),
-          registerPassword.value
-        );
-        setAuthStatus("Account created.", "success");
-      } catch (error) {
-        setAuthStatus(formatAuthError(error), "error");
-      } finally {
-        setAuthBusy(false);
-      }
-    });
+    if (registerForm) {
+      registerForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        if (!registerEmail || !registerPassword || !registerConfirm) {
+          return;
+        }
+        if (registerPassword.value !== registerConfirm.value) {
+          setAuthStatus("Passwords do not match.", "error");
+          return;
+        }
+        setAuthBusy(true);
+        setAuthStatus("Creating account...", "");
+        try {
+          await createUserWithEmailAndPassword(
+            auth,
+            registerEmail.value.trim(),
+            registerPassword.value
+          );
+          setAuthStatus("Account created.", "success");
+        } catch (error) {
+          setAuthStatus(formatAuthError(error), "error");
+        } finally {
+          setAuthBusy(false);
+        }
+      });
+    }
 
     if (logoutButton) {
       logoutButton.addEventListener("click", async () => {

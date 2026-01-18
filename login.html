@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | Nickson Chen</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Space+Grotesk:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="login-page">
+    <div class="cursor-glow" aria-hidden="true"></div>
+    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="bg-orbs" aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="login-orbs" aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="logo" href="index.html">NC</a>
+        <a class="nav-cta nav-login" href="index.html">Back to site</a>
+      </div>
+    </header>
+
+    <main>
+      <div class="container login-layout">
+        <div class="login-intro">
+          <p class="eyebrow">Secure access</p>
+          <h1>Welcome back</h1>
+          <p>
+            Sign in to keep your utilities, saved projects, and workspace in
+            sync across devices.
+          </p>
+        </div>
+        <div class="auth-card login-card">
+          <h2>Login</h2>
+          <form id="login-form" class="auth-form is-active" autocomplete="on">
+            <label class="field" for="login-email">
+              <span>Email</span>
+              <input id="login-email" type="email" required />
+            </label>
+            <label class="field" for="login-password">
+              <span>Password</span>
+              <input id="login-password" type="password" required />
+            </label>
+            <div class="login-options">
+              <label class="toggle">
+                <input type="checkbox" />
+                <span>Remember me</span>
+              </label>
+              <a href="#">Forgot password?</a>
+            </div>
+            <button class="btn primary" type="submit">Sign in</button>
+          </form>
+          <div class="auth-meta">
+            <span id="auth-user" class="auth-user"></span>
+            <button class="btn ghost" id="logout-button" type="button">
+              Log out
+            </button>
+          </div>
+          <p class="status" id="auth-status" role="status"></p>
+          <p class="auth-note">
+            Add your Firebase config in <code>js/main.js</code> to activate
+            login.
+          </p>
+        </div>
+      </div>
+    </main>
+
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>
