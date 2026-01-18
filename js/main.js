@@ -93,10 +93,13 @@ const SOURCE_LIST = [
 ];
 
 const FIREBASE_CONFIG = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  projectId: "YOUR_PROJECT_ID",
-  appId: "YOUR_APP_ID",
+  apiKey: "AIzaSyAO5pSel9ZJ4pOD5sGnAmNCHHAYbyObhBU",
+  authDomain: "nicksonc-4b18c.firebaseapp.com",
+  projectId: "nicksonc-4b18c",
+  storageBucket: "nicksonc-4b18c.firebasestorage.app",
+  messagingSenderId: "140532725537",
+  appId: "1:140532725537:web:7f8b8afae5adceac58b060",
+  measurementId: "G-YLRR56HBHY",
 };
 
 const setStatus = (message, state) => {
@@ -1175,6 +1178,9 @@ initAuth();
 
 const initParallax = () => {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    return;
+  }
+  if (window.matchMedia("(max-width: 700px)").matches) {
     return;
   }
   const parallaxItems = Array.from(document.querySelectorAll("[data-parallax]"));

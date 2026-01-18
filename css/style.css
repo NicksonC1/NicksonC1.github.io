@@ -683,6 +683,16 @@ main {
   color: var(--ink);
 }
 
+.auth-switch {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.auth-switch a {
+  color: var(--accent-strong);
+  font-weight: 600;
+}
+
 .login-page .site-header {
   background: rgba(4, 8, 18, 0.4);
 }
@@ -1023,6 +1033,18 @@ main {
     flex-wrap: wrap;
   }
 
+  .hero {
+    padding: 90px 0 70px;
+  }
+
+  .hero-inner {
+    gap: 32px;
+  }
+
+  .section {
+    padding: 70px 0;
+  }
+
   .hero-actions {
     flex-direction: column;
     align-items: flex-start;
@@ -1031,6 +1053,16 @@ main {
   .section-head {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .section-head {
+    margin-bottom: 26px;
+  }
+}
+
+@media (max-width: 700px) {
+  [data-parallax] {
+    transform: none !important;
   }
 }
 

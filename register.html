@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login | Nickson Chen</title>
+    <title>Register | Nickson Chen</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -29,42 +29,39 @@
     <header class="site-header">
       <div class="container nav-wrap">
         <a class="logo" href="index.html">NC</a>
-        <a class="nav-cta nav-login" href="index.html">Back to site</a>
+        <a class="nav-cta nav-login" href="login.html">Login</a>
       </div>
     </header>
 
     <main>
       <div class="container login-layout">
         <div class="login-intro">
-          <p class="eyebrow">Secure access</p>
-          <h1>Welcome back</h1>
+          <p class="eyebrow">Create account</p>
+          <h1>Join the workspace</h1>
           <p>
-            Sign in to keep your utilities, saved projects, and workspace in
-            sync across devices.
+            Register to save utilities, keep transcripts synced, and unlock the
+            personal toolkit.
           </p>
         </div>
         <div class="auth-card login-card">
-          <h2>Login</h2>
-          <form id="login-form" class="auth-form is-active" autocomplete="on">
-            <label class="field" for="login-email">
+          <h2>Register</h2>
+          <form id="register-form" class="auth-form is-active" autocomplete="on">
+            <label class="field" for="register-email">
               <span>Email</span>
-              <input id="login-email" type="email" required />
+              <input id="register-email" type="email" required />
             </label>
-            <label class="field" for="login-password">
+            <label class="field" for="register-password">
               <span>Password</span>
-              <input id="login-password" type="password" required />
+              <input id="register-password" type="password" required />
             </label>
-            <div class="login-options">
-              <label class="toggle">
-                <input type="checkbox" />
-                <span>Remember me</span>
-              </label>
-              <a href="#">Forgot password?</a>
-            </div>
-            <button class="btn primary" type="submit">Sign in</button>
+            <label class="field" for="register-confirm">
+              <span>Confirm password</span>
+              <input id="register-confirm" type="password" required />
+            </label>
+            <button class="btn primary" type="submit">Create account</button>
           </form>
           <p class="auth-switch">
-            New here? <a href="register.html">Create an account</a>
+            Already have an account? <a href="login.html">Sign in</a>
           </p>
           <div class="auth-meta">
             <span id="auth-user" class="auth-user"></span>
@@ -75,7 +72,7 @@
           <p class="status" id="auth-status" role="status"></p>
           <p class="auth-note">
             Add your Firebase config in <code>js/main.js</code> to activate
-            login.
+            registration.
           </p>
         </div>
       </div>
